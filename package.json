@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:netlify": "vite build && cp -r js dist/ && cp -r css dist/",
     "preview": "vite preview",
     "start": "npm run dev",
     "dev:live": "live-server . --port=8847 --host=localhost",
