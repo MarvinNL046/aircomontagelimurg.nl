@@ -1,0 +1,27 @@
+{
+  "name": "aircomontagelimburg",
+  "version": "1.0.0",
+  "description": "Airco Montage Limburg - Professional airco installation website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "npm run dev",
+    "dev:live": "live-server . --port=8847 --host=localhost",
+    "serve": "python3 -m http.server 8847"
+  },
+  "keywords": [
+    "airco",
+    "limburg",
+    "installatie",
+    "onderhoud"
+  ],
+  "author": "Airco Montage Limburg",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "vite": "^5.0.0",
+    "terser": "^5.24.0"
+  }
+}

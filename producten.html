@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airco Producten & Merken | Daikin, LG, Samsung | Beste Prijzen</title>
+    <meta name="description" content="Ontdek ons complete assortiment airco's van topmerken. Daikin, LG, Samsung, Mitsubishi ✓ Vergelijk modellen ✓ Beste prijs garantie ✓ Gratis advies">
+    <meta name="keywords" content="airco producten, daikin airco, lg airco, samsung airco, airco modellen, airco prijzen">
+    
+    <!-- Performance & SEO Meta Tags -->
+    <meta name="theme-color" content="#F97316">
+    <link rel="canonical" href="https://aircomontagelimburg.nl/producten">
+    
+    <!-- Schema.org Product Catalog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProductCatalog",
+      "name": "Airco Producten Catalogus",
+      "description": "Complete catalogus van airconditioning systemen",
+      "url": "https://aircomontagelimburg.nl/producten",
+      "provider": {
+        "@type": "Organization",
+        "name": "Airco Montage Limburg"
+      }
+    }
+    </script>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aircomontagelimburg.nl/producten">
+    <meta property="og:title" content="Airco Producten | Alle Merken & Modellen">
+    <meta property="og:description" content="Bekijk ons complete assortiment airco's. Vergelijk prijzen en specificaties.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Products Page Specific CSS -->
+    <style>
+        .filter-section {
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .product-card-full {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .product-card-full:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        
+        .product-image {
+            height: 250px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-details {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-specs {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+        
+        .product-specs li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-specs i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .filter-btn {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border: 1px solid #dee2e6;
+            background: white;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .products-hero {
+            background: linear-gradient(135deg, #1F2937 0%, #2563EB 100%);
+            color: white;
+            padding: 120px 0 60px;
+        }
+        
+        @media (max-width: 991px) {
+            .filter-section {
+                position: relative;
+                top: 0;
+                max-height: none;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+    
+    <!-- EmailJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top scrolled" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="brand-icon">AM</span>
+                <span class="brand-text">
+                    <strong>Airco Montage</strong>
+                    <small class="d-block">Limburg</small>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#diensten">Diensten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#over-ons">Over Ons</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/producten.html">Producten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                </ul>
+                <a href="tel:0462021430" class="btn btn-primary ms-lg-3">
+                    <i class="bi bi-telephone"></i> 046 202 1430
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/" style="color: rgba(255,255,255,0.8);">Home</a></li>
+                    <li class="breadcrumb-item active text-white">Producten</li>
+                </ol>
+            </nav>
+            
+            <h1 class="display-4 fw-bold mb-4">Airco <span class="text-primary">Producten</span></h1>
+            <p class="lead mb-0">
+                Ontdek ons complete assortiment van premium airconditioning systemen. 
+                Van compact tot krachtig, voor elke ruimte de perfecte oplossing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Stats Bar -->
+    <section class="py-3 bg-light border-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">
+                        <strong><span id="productCount">24</span> producten</strong> gevonden
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <select class="form-select d-inline-block w-auto" id="sortProducts">
+                        <option value="popular">Meest populair</option>
+                        <option value="price-low">Prijs: Laag naar hoog</option>
+                        <option value="price-high">Prijs: Hoog naar laag</option>
+                        <option value="name">Naam: A-Z</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Filter Sidebar -->
+                <div class="col-lg-3">
+                    <div class="filter-section">
+                        <h5 class="mb-3">Filter Producten</h5>
+                        
+                        <!-- Brand Filter -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small mb-3">Merk</h6>
+                            <button class="filter-btn active" data-filter="all">
+                                Alle merken <span class="badge bg-secondary float-end">24</span>
+                            </button>
+                            <button class="filter-btn" data-filter="daikin">
+                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="me-2">
+                                Daikin <span class="badge bg-secondary float-end">8</span>
+                            </button>
+                            <button class="filter-btn" data-filter="lg">
+                                <img src="public/images/brands/LG_logo_(2014).svg" alt="LG" style="height: 20px;" class="me-2">
+                                LG <span class="badge bg-secondary float-end">6</span>
+                            </button>
+                            <button class="filter-btn" data-filter="samsung">
+                                <img src="public/images/brands/Samsung_Logo.svg" alt="Samsung" style="height: 20px;" class="me-2">
+                                Samsung <span class="badge bg-secondary float-end">5</span>
+                            </button>
+                            <button class="filter-btn" data-filter="mitsubishi">
+                                Mitsubishi <span class="badge bg-secondary float-end">3</span>
+                            </button>
+                            <button class="filter-btn" data-filter="toshiba">
+                                <img src="public/images/brands/Toshiba_logo.svg" alt="Toshiba" style="height: 20px;" class="me-2">
+                                Toshiba <span class="badge bg-secondary float-end">2</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Type Filter -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small mb-3">Type</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="type-split" checked>
+                                <label class="form-check-label" for="type-split">
+                                    Split-unit wandmodel
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="type-multi">
+                                <label class="form-check-label" for="type-multi">
+                                    Multi-split systeem
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="type-floor">
+                                <label class="form-check-label" for="type-floor">
+                                    Vloermodel
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Range -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small mb-3">Prijs</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="price-1">
+                                <label class="form-check-label" for="price-1">
+                                    €1.000 - €1.500
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="price-2">
+                                <label class="form-check-label" for="price-2">
+                                    €1.500 - €2.000
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="price-3">
+                                <label class="form-check-label" for="price-3">
+                                    €2.000+
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small mb-3">Kenmerken</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="feat-wifi">
+                                <label class="form-check-label" for="feat-wifi">
+                                    WiFi bediening
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="feat-heat">
+                                <label class="form-check-label" for="feat-heat">
+                                    Verwarmen & koelen
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="feat-quiet">
+                                <label class="form-check-label" for="feat-quiet">
+                                    Fluisterstil
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="col-lg-9">
+                    <div class="product-grid" id="productsGrid">
+                        <!-- Daikin Products -->
+                        <div class="product-card-full" data-brand="daikin" data-price="1899">
+                            <span class="product-badge badge bg-danger">Bestseller</span>
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/daikin-perfera-wit.webp" alt="Daikin Perfera">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <h4>Perfera FTXM-R</h4>
+                                <p class="text-muted small">Het topmodel met de beste prestaties</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A+++ energie label</li>
+                                    <li><i class="bi bi-wifi"></i> WiFi & app bediening</li>
+                                    <li><i class="bi bi-volume-mute"></i> Fluisterstil: 19 dB</li>
+                                    <li><i class="bi bi-snow"></i> Koelen & verwarmen</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.899</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card-full" data-brand="daikin" data-price="1299">
+                            <span class="product-badge badge bg-warning text-dark">Beste Koop</span>
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/daikin-comfora-right.webp" alt="Daikin Comfora">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <h4>Comfora FTXP-M</h4>
+                                <p class="text-muted small">Uitstekende prijs-kwaliteit verhouding</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A++ energie label</li>
+                                    <li><i class="bi bi-wifi"></i> Optionele WiFi</li>
+                                    <li><i class="bi bi-volume-down"></i> Stil: 21 dB</li>
+                                    <li><i class="bi bi-snow"></i> Koelen & verwarmen</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.299</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card-full" data-brand="daikin" data-price="1599">
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/daikin-stylish-wit.webp" alt="Daikin Stylish">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <h4>Stylish FTXA-AW</h4>
+                                <p class="text-muted small">Design airco in wit, zilver of zwart</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A+++ energie label</li>
+                                    <li><i class="bi bi-palette"></i> 3 kleuren beschikbaar</li>
+                                    <li><i class="bi bi-award"></i> Red Dot Design Award</li>
+                                    <li><i class="bi bi-snow"></i> Koelen & verwarmen</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.599</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card-full" data-brand="daikin" data-price="2299">
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/daikin-emura-wit.webp" alt="Daikin Emura">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <h4>Emura FTXJ-MW</h4>
+                                <p class="text-muted small">Iconisch design, superieure prestaties</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A+++ energie label</li>
+                                    <li><i class="bi bi-gem"></i> Premium design</li>
+                                    <li><i class="bi bi-wifi"></i> WiFi standaard</li>
+                                    <li><i class="bi bi-volume-mute"></i> Ultra stil: 19 dB</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €2.299</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- LG Products -->
+                        <div class="product-card-full" data-brand="lg" data-price="1699">
+                            <span class="product-badge badge bg-info">Nieuw</span>
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/lg-artcool-beige.webp" alt="LG Artcool">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/LG_logo_(2014).svg" alt="LG" style="height: 20px;" class="mb-2">
+                                <h4>Artcool Gallery</h4>
+                                <p class="text-muted small">Kunstwerk aan de muur</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A++ energie label</li>
+                                    <li><i class="bi bi-image"></i> Verwisselbaar kunstpaneel</li>
+                                    <li><i class="bi bi-wifi"></i> WiFi & ThinQ app</li>
+                                    <li><i class="bi bi-shield"></i> 10 jaar garantie compressor</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.699</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card-full" data-brand="lg" data-price="1399">
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/lg-standard-plus-wit.webp" alt="LG Standard Plus">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/LG_logo_(2014).svg" alt="LG" style="height: 20px;" class="mb-2">
+                                <h4>Standard Plus PC12SQ</h4>
+                                <p class="text-muted small">Betrouwbaar en betaalbaar</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A++ energie label</li>
+                                    <li><i class="bi bi-fan"></i> Dual Inverter Compressor</li>
+                                    <li><i class="bi bi-droplet"></i> Auto Cleaning functie</li>
+                                    <li><i class="bi bi-snow"></i> Koelen & verwarmen</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.399</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Samsung Products -->
+                        <div class="product-card-full" data-brand="samsung" data-price="1799">
+                            <span class="product-badge badge bg-success">Eco</span>
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/samsung-wind-free-wit.webp" alt="Samsung Wind-Free">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/Samsung_Logo.svg" alt="Samsung" style="height: 20px;" class="mb-2">
+                                <h4>Wind-Free Elite</h4>
+                                <p class="text-muted small">Koeling zonder koude luchtstroom</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A+++ energie label</li>
+                                    <li><i class="bi bi-wind"></i> Wind-Free technologie</li>
+                                    <li><i class="bi bi-wifi"></i> SmartThings app</li>
+                                    <li><i class="bi bi-mic-mute"></i> Stil: 19 dB</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.799</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card-full" data-brand="samsung" data-price="1499">
+                            <div class="product-image">
+                                <img loading="lazy" src="public/images/products/samsung-cebu-wit.webp" alt="Samsung CEBU">
+                            </div>
+                            <div class="product-details">
+                                <img src="public/images/brands/Samsung_Logo.svg" alt="Samsung" style="height: 20px;" class="mb-2">
+                                <h4>CEBU AR09</h4>
+                                <p class="text-muted small">Krachtig en energiezuinig</p>
+                                <ul class="product-specs">
+                                    <li><i class="bi bi-check-circle"></i> A++ energie label</li>
+                                    <li><i class="bi bi-speedometer2"></i> Fast Cooling</li>
+                                    <li><i class="bi bi-shield"></i> Triple Protector</li>
+                                    <li><i class="bi bi-snow"></i> Koelen & verwarmen</li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <p class="price-tag mb-2">vanaf €1.499</p>
+                                    <div class="d-grid gap-2">
+                                        <a href="#contact" class="btn btn-primary">Offerte Aanvragen</a>
+                                        <a href="#" class="btn btn-outline-secondary btn-sm">Meer Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Load More Button -->
+                    <div class="text-center mt-5">
+                        <button class="btn btn-outline-primary btn-lg" id="loadMore">
+                            <i class="bi bi-arrow-down-circle me-2"></i>Laad Meer Producten
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-3">Hulp nodig bij het kiezen?</h2>
+                    <p class="lead mb-0">
+                        Onze experts helpen u graag met het vinden van de perfecte airco voor uw situatie. 
+                        Gratis advies en inmeting aan huis!
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <a href="tel:0462021430" class="btn btn-light btn-lg">
+                        <i class="bi bi-telephone me-2"></i>Bel Voor Advies
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-5" id="contact">
+        <div class="container">
+            <h2 class="text-center mb-5">Vraag Een <span class="text-primary">Offerte</span> Aan</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-wrapper">
+                        <form id="productContactForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Naam *</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Telefoon *</label>
+                                    <input type="tel" class="form-control" name="phone" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">E-mail *</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Geïnteresseerd in</label>
+                                    <select class="form-select" name="product_interest">
+                                        <option value="">Selecteer product/merk</option>
+                                        <option value="Daikin Perfera">Daikin Perfera</option>
+                                        <option value="Daikin Comfora">Daikin Comfora</option>
+                                        <option value="Daikin Stylish">Daikin Stylish</option>
+                                        <option value="LG Artcool">LG Artcool</option>
+                                        <option value="Samsung Wind-Free">Samsung Wind-Free</option>
+                                        <option value="Nog geen voorkeur">Nog geen voorkeur</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Vraag of opmerking</label>
+                                    <textarea class="form-control" name="message" rows="3"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        <span class="btn-text">
+                                            <i class="bi bi-send me-2"></i>Verstuur Offerte Aanvraag
+                                        </span>
+                                        <span class="btn-loading d-none">
+                                            <span class="spinner-border spinner-border-sm me-2"></span>
+                                            Verzenden...
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="alert-container mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand mb-3">
+                        <span class="brand-icon">AM</span>
+                        <span class="brand-text">
+                            <strong>Airco Montage Limburg</strong>
+                        </span>
+                    </div>
+                    <p class="text-white-50">
+                        Specialist in airconditioning voor heel Limburg. 
+                        Officieel dealer van alle grote merken.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Merken</h5>
+                    <ul class="footer-links two-columns">
+                        <li><a href="#daikin">Daikin</a></li>
+                        <li><a href="#lg">LG</a></li>
+                        <li><a href="#samsung">Samsung</a></li>
+                        <li><a href="#mitsubishi">Mitsubishi</a></li>
+                        <li><a href="#toshiba">Toshiba</a></li>
+                        <li><a href="#tosot">Tosot</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="mb-2">
+                        <i class="bi bi-telephone me-2"></i>
+                        <a href="tel:0462021430" class="text-white">046 202 1430</a>
+                    </p>
+                    <p class="mb-2">
+                        <i class="bi bi-whatsapp me-2"></i>
+                        <a href="https://wa.me/31462021430" class="text-white">WhatsApp</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-envelope me-2"></i>
+                        <a href="mailto:info@aircomontagelimburg.nl" class="text-white">info@aircomontagelimburg.nl</a>
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="text-center text-white-50">
+                <p class="mb-0">&copy; 2024 Airco Montage Limburg. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta d-block d-md-none">
+        <a href="tel:0462021430" class="btn btn-primary btn-lg">
+            <i class="bi bi-telephone-fill me-2"></i>Bel Voor Advies
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script defer src="js/main.js"></script>
+    
+    <!-- Products Page JS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Setup form
+        const productForm = document.getElementById('productContactForm');
+        if (productForm) {
+            setupForm('productContactForm', 'Product offerte aanvraag');
+        }
+        
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const products = document.querySelectorAll('.product-card-full');
+        const productCount = document.getElementById('productCount');
+        
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                let visibleCount = 0;
+                
+                products.forEach(product => {
+                    if (filter === 'all' || product.getAttribute('data-brand') === filter) {
+                        product.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+                
+                productCount.textContent = visibleCount;
+            });
+        });
+        
+        // Sort functionality
+        const sortSelect = document.getElementById('sortProducts');
+        sortSelect.addEventListener('change', function() {
+            const sortValue = this.value;
+            const productsArray = Array.from(products);
+            const grid = document.getElementById('productsGrid');
+            
+            productsArray.sort((a, b) => {
+                if (sortValue === 'price-low') {
+                    return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+                } else if (sortValue === 'price-high') {
+                    return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
+                } else if (sortValue === 'name') {
+                    return a.querySelector('h4').textContent.localeCompare(b.querySelector('h4').textContent);
+                }
+                return 0;
+            });
+            
+            productsArray.forEach(product => {
+                grid.appendChild(product);
+            });
+        });
+        
+        // Load more button (demo)
+        const loadMoreBtn = document.getElementById('loadMore');
+        loadMoreBtn.addEventListener('click', function() {
+            alert('Meer producten worden binnenkort toegevoegd!');
+        });
+    });
+    </script>
+</body>
+</html>

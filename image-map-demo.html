@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map Demo - Airco Systeem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .image-map-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        .image-map-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        area {
+            cursor: pointer;
+        }
+        
+        .info-box {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactieve Airco Systeem Map</h1>
+    <p>Klik op verschillende onderdelen van de airco voor meer informatie:</p>
+    
+    <div class="image-map-container">
+        <!-- Vervang dit met je eigen afbeelding -->
+        <img src="images/placeholder.svg" alt="Airco systeem" usemap="#airco-map" id="airco-image">
+        
+        <!-- Image Map Definition -->
+        <map name="airco-map">
+            <!-- Voorbeeld coördinaten - pas deze aan voor je eigen afbeelding -->
+            <!-- Binnenunit -->
+            <area shape="rect" 
+                  coords="50,50,250,200" 
+                  href="#" 
+                  alt="Binnenunit" 
+                  title="Binnenunit - Split airco indoor unit"
+                  data-info="binnenunit">
+            
+            <!-- Buitenunit -->
+            <area shape="rect" 
+                  coords="300,50,500,200" 
+                  href="#" 
+                  alt="Buitenunit" 
+                  title="Buitenunit - Compressor unit"
+                  data-info="buitenunit">
+            
+            <!-- Leidingen -->
+            <area shape="rect" 
+                  coords="150,250,400,350" 
+                  href="#" 
+                  alt="Koelleidingen" 
+                  title="Koelleidingen - Verbinding tussen units"
+                  data-info="leidingen">
+            
+            <!-- Afstandsbediening -->
+            <area shape="circle" 
+                  coords="600,150,50" 
+                  href="#" 
+                  alt="Afstandsbediening" 
+                  title="Afstandsbediening - Voor temperatuurregeling"
+                  data-info="remote">
+        </map>
+        
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+    
+    <div class="info-box" id="info-box">
+        <h3>Informatie</h3>
+        <p>Klik op een onderdeel van de airco voor gedetailleerde informatie.</p>
+    </div>
+    
+    <h2>Hoe maak je een image map?</h2>
+    <ol>
+        <li><strong>Plaats je afbeelding</strong> in de images folder</li>
+        <li><strong>Bepaal de coördinaten</strong> met een tool zoals:
+            <ul>
+                <li><a href="https://www.image-map.net/" target="_blank">Online Image Map Editor</a></li>
+                <li><a href="https://imagemap.org/" target="_blank">ImageMap.org</a></li>
+            </ul>
+        </li>
+        <li><strong>Definieer areas</strong> met shapes:
+            <ul>
+                <li><code>rect</code> - coords="x1,y1,x2,y2"</li>
+                <li><code>circle</code> - coords="x,y,radius"</li>
+                <li><code>poly</code> - coords="x1,y1,x2,y2,x3,y3..."</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <script>
+        // Info voor verschillende onderdelen
+        const partInfo = {
+            binnenunit: {
+                title: 'Binnenunit (Indoor Unit)',
+                description: 'De binnenunit blaast gekoelde of verwarmde lucht de ruimte in. Bevat filters voor schone lucht en is verkrijgbaar in verschillende designs zoals wandmodel, plafondcassette of vloermodel.'
+            },
+            buitenunit: {
+                title: 'Buitenunit (Outdoor Unit)',
+                description: 'Bevat de compressor en condensor. Staat buiten en zorgt voor de warmte-uitwisseling met de buitenlucht. Moet goed geventileerd worden geplaatst.'
+            },
+            leidingen: {
+                title: 'Koelleidingen',
+                description: 'Geïsoleerde koperen leidingen die koelmiddel transporteren tussen binnen- en buitenunit. Correct installeren is cruciaal voor efficiënte werking.'
+            },
+            remote: {
+                title: 'Afstandsbediening',
+                description: 'Moderne bediening met temperatuurregeling, timerfuncties, swing-modus en energiebesparende instellingen. Vaak ook via WiFi en app te bedienen.'
+            }
+        };
+        
+        // Tooltip functionaliteit
+        const tooltip = document.getElementById('tooltip');
+        const infoBox = document.getElementById('info-box');
+        const areas = document.querySelectorAll('area');
+        
+        areas.forEach(area => {
+            // Hover effect
+            area.addEventListener('mouseenter', function(e) {
+                tooltip.textContent = this.getAttribute('title');
+                tooltip.style.display = 'block';
+            });
+            
+            area.addEventListener('mousemove', function(e) {
+                tooltip.style.left = e.pageX + 10 + 'px';
+                tooltip.style.top = e.pageY + 10 + 'px';
+            });
+            
+            area.addEventListener('mouseleave', function() {
+                tooltip.style.display = 'none';
+            });
+            
+            // Click event
+            area.addEventListener('click', function(e) {
+                e.preventDefault();
+                const infoKey = this.getAttribute('data-info');
+                const info = partInfo[infoKey];
+                
+                if (info) {
+                    infoBox.innerHTML = `
+                        <h3>${info.title}</h3>
+                        <p>${info.description}</p>
+                    `;
+                    infoBox.classList.add('highlight');
+                    
+                    // Scroll naar info box
+                    infoBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Remove highlight na animatie
+                    setTimeout(() => {
+                        infoBox.classList.remove('highlight');
+                    }, 2000);
+                }
+            });
+        });
+        
+        // Responsive image map (bij resize)
+        window.addEventListener('resize', function() {
+            // Voor een volledig responsive image map zou je de coördinaten 
+            // dynamisch moeten herberekenen op basis van de image grootte
+            console.log('Window resized - image map coordinates may need adjustment');
+        });
+    </script>
+</body>
+</html>

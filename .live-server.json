@@ -1,0 +1,8 @@
+{
+  "port": 8847,
+  "host": "localhost",
+  "root": ".",
+  "file": "index.html",
+  "wait": 1000,
+  "logLevel": 2
+}
