@@ -1,39 +1,7 @@
-# Robots.txt for aircomontagelimburg.nl
-# Last updated: 2024-01-15
-
-# Allow all crawlers
 User-agent: *
 Allow: /
-
-# Specific rules for major search engines
-User-agent: Googlebot
-Crawl-delay: 0
-
-User-agent: Bingbot
-Crawl-delay: 1
-
-# Block access to admin/private directories (if any)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /.git/
-Disallow: /node_modules/
-
-# Block access to specific file types
-Disallow: /*.json$
-Disallow: /*.md$
-Disallow: /*.log$
-Disallow: /*.svg$
-
-# Allow access to images
-Allow: /public/images/
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.webp$
-
-# Sitemap location
 Sitemap: https://aircomontagelimburg.nl/sitemap.xml
 
-# Crawl-delay for other bots
-User-agent: *
-Crawl-delay: 2
+# Disallow admin or private directories if any
+Disallow: /admin/
+Disallow: /private/

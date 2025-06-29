@@ -3,11 +3,13 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   root: '.',
   base: '/',
+  publicDir: 'public',
   build: {
     outDir: 'dist',
     minify: 'terser',
     cssMinify: true,
     sourcemap: false,
+    copyPublicDir: true,
     rollupOptions: {
       input: {
         main: './index.html',

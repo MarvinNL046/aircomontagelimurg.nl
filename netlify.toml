@@ -7,6 +7,13 @@
   to = "/index.html"
   status = 200
   conditions = {Role = ["admin"]}
+  
+# Fallback redirect for SPA behavior (optional)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
 
 [[headers]]
   for = "/*"
