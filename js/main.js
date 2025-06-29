@@ -178,10 +178,26 @@ const EMAILJS_SERVICE_ID = 'service_1rruujp';
 const EMAILJS_TEMPLATE_ID = 'template_rkcpzhg';
 const EMAILJS_PUBLIC_KEY = 'sjJ8kK6U9wFjY0zX9';
 
-// Initialize EmailJS
-(function() {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-})();
+// Initialize EmailJS when it's loaded
+let emailJsReady = false;
+
+function initializeEmailJS() {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+        emailJsReady = true;
+        return true;
+    }
+    return false;
+}
+
+// Wait for EmailJS to load
+function waitForEmailJS(callback) {
+    if (initializeEmailJS()) {
+        callback();
+    } else {
+        setTimeout(() => waitForEmailJS(callback), 100);
+    }
+}
 
 // Apply branding when DOM is loaded
 document.addEventListener('DOMContentLoaded', applyBranding);
@@ -320,6 +336,11 @@ function setupForm(formId, formType) {
         };
         
         try {
+            // Check if EmailJS is ready
+            if (!emailJsReady) {
+                throw new Error('EmailJS is not ready yet. Please try again.');
+            }
+            
             // Send email
             const response = await emailjs.send(
                 EMAILJS_SERVICE_ID,
@@ -435,3 +456,12 @@ if ('IntersectionObserver' in window) {
     
     lazyImages.forEach(img => imageObserver.observe(img));
 }
+
+// Initialize forms when EmailJS is ready
+document.addEventListener('DOMContentLoaded', function() {
+    waitForEmailJS(function() {
+        // Setup forms
+        setupForm('heroForm', 'Hero');
+        setupForm('contactForm', 'Contact');
+    });
+});
