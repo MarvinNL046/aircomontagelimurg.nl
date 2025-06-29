@@ -297,6 +297,15 @@ function setupForm(formId, formType) {
     const form = document.getElementById(formId);
     if (!form) return;
     
+    // Check if form is already initialized
+    if (form.dataset.initialized === 'true') {
+        console.log(`Form ${formId} already initialized, skipping...`);
+        return;
+    }
+    
+    // Mark form as initialized
+    form.dataset.initialized = 'true';
+    
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -335,12 +344,29 @@ function setupForm(formId, formType) {
             to_name: brand.name,
             reply_to: data.email || '',
             
+            // Additional fields
+            address: data.address || '',
+            city: data.city || '',
+            property_type: data.property_type || '',
+            rooms: data.rooms || '',
+            availability: data.availability || '',
+            date: data.date || '',
+            project: data.project || '',
+            product_interest: data.product_interest || '',
+            
             // Dutch field names (sommige templates gebruiken deze)
             naam: data.name || '',
             email: data.email || '',
             telefoon: data.phone || '',
             dienst: data.service || '',
             bericht: data.message || 'Geen bericht opgegeven',
+            woonplaats: data.city || data.address || '',
+            postcode: data.address || '',
+            type_woning: data.property_type || '',
+            aantal_kamers: data.rooms || '',
+            beschikbaarheid: data.availability || '',
+            datum: data.date || '',
+            project_type: data.project || '',
             
             // Complete message as backup
             full_message: `
@@ -348,6 +374,14 @@ Nieuwe aanvraag via ${window.location.hostname}:
 Naam: ${data.name || 'Niet opgegeven'}
 Email: ${data.email || 'Niet opgegeven'}
 Telefoon: ${data.phone || 'Niet opgegeven'}
+Woonplaats: ${data.city || data.address || 'Niet opgegeven'}
+Postcode/Adres: ${data.address || 'Niet opgegeven'}
+Type woning: ${data.property_type || 'Niet opgegeven'}
+Aantal kamers: ${data.rooms || 'Niet opgegeven'}
+Beschikbaarheid: ${data.availability || 'Niet opgegeven'}
+Datum: ${data.date || 'Niet opgegeven'}
+Project type: ${data.project || 'Niet opgegeven'}
+Product interesse: ${data.product_interest || 'Niet opgegeven'}
 Dienst: ${data.service || 'Niet opgegeven'}
 Bericht: ${data.message || 'Geen bericht opgegeven'}
             `.trim()
@@ -407,11 +441,7 @@ function showAlert(form, type, message) {
     }, 10000);
 }
 
-// Initialize forms
-document.addEventListener('DOMContentLoaded', function() {
-    setupForm('heroForm', 'Hero formulier');
-    setupForm('contactForm', 'Contact formulier');
-});
+// Forms will be initialized when EmailJS is ready (see below)
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
