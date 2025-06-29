@@ -47,7 +47,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
     
     <!-- Products Page Specific CSS -->
     <style>
@@ -168,6 +167,7 @@
     
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <link rel="stylesheet" crossorigin href="/css/style.css">
 </head>
 <body>
 
@@ -254,22 +254,22 @@
                                 Alle merken <span class="badge bg-secondary float-end">24</span>
                             </button>
                             <button class="filter-btn" data-filter="daikin">
-                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="me-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMEE4RTEiPkRBSUtJTjwvdGV4dD4KPC9zdmc+" alt="Daikin" style="height: 20px;" class="me-2">
                                 Daikin <span class="badge bg-secondary float-end">8</span>
                             </button>
                             <button class="filter-btn" data-filter="lg">
-                                <img src="public/images/brands/LG_logo_(2014).svg" alt="LG" style="height: 20px;" class="me-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjMwIiByPSIyNSIgZmlsbD0iI0E1MDAzNCIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5MRzwvdGV4dD4KPC9zdmc+" alt="LG" style="height: 20px;" class="me-2">
                                 LG <span class="badge bg-secondary float-end">6</span>
                             </button>
                             <button class="filter-btn" data-filter="samsung">
-                                <img src="public/images/brands/Samsung_Logo.svg" alt="Samsung" style="height: 20px;" class="me-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzE0MjhBMCI+U0FNU1VORzwvdGV4dD4KPC9zdmc+" alt="Samsung" style="height: 20px;" class="me-2">
                                 Samsung <span class="badge bg-secondary float-end">5</span>
                             </button>
                             <button class="filter-btn" data-filter="mitsubishi">
                                 Mitsubishi <span class="badge bg-secondary float-end">3</span>
                             </button>
                             <button class="filter-btn" data-filter="toshiba">
-                                <img src="public/images/brands/Toshiba_logo.svg" alt="Toshiba" style="height: 20px;" class="me-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNFNjAwMTIiPlRPU0hJQkE8L3RleHQ+Cjwvc3ZnPg==" alt="Toshiba" style="height: 20px;" class="me-2">
                                 Toshiba <span class="badge bg-secondary float-end">2</span>
                             </button>
                         </div>
@@ -352,10 +352,10 @@
                         <div class="product-card-full" data-brand="daikin" data-price="1899">
                             <span class="product-badge badge bg-danger">Bestseller</span>
                             <div class="product-image">
-                                <img loading="lazy" src="public/images/products/daikin-perfera-wit.webp" alt="Daikin Perfera">
+                                <img loading="lazy" src="/assets/daikin-perfera-wit.webp" alt="Daikin Perfera">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMEE4RTEiPkRBSUtJTjwvdGV4dD4KPC9zdmc+" alt="Daikin" style="height: 20px;" class="mb-2">
                                 <h4>Perfera FTXM-R</h4>
                                 <p class="text-muted small">Het topmodel met de beste prestaties</p>
                                 <ul class="product-specs">
@@ -377,10 +377,10 @@
                         <div class="product-card-full" data-brand="daikin" data-price="1299">
                             <span class="product-badge badge bg-warning text-dark">Beste Koop</span>
                             <div class="product-image">
-                                <img loading="lazy" src="public/images/products/daikin-comfora-right.webp" alt="Daikin Comfora">
+                                <img loading="lazy" src="/assets/daikin-comfora-right.webp" alt="Daikin Comfora">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMEE4RTEiPkRBSUtJTjwvdGV4dD4KPC9zdmc+" alt="Daikin" style="height: 20px;" class="mb-2">
                                 <h4>Comfora FTXP-M</h4>
                                 <p class="text-muted small">Uitstekende prijs-kwaliteit verhouding</p>
                                 <ul class="product-specs">
@@ -401,10 +401,10 @@
                         
                         <div class="product-card-full" data-brand="daikin" data-price="1599">
                             <div class="product-image">
-                                <img loading="lazy" src="public/images/products/daikin-stylish-wit.webp" alt="Daikin Stylish">
+                                <img loading="lazy" src="/assets/daikin-stylish-wit.webp" alt="Daikin Stylish">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMEE4RTEiPkRBSUtJTjwvdGV4dD4KPC9zdmc+" alt="Daikin" style="height: 20px;" class="mb-2">
                                 <h4>Stylish FTXA-AW</h4>
                                 <p class="text-muted small">Design airco in wit, zilver of zwart</p>
                                 <ul class="product-specs">
@@ -425,10 +425,10 @@
                         
                         <div class="product-card-full" data-brand="daikin" data-price="2299">
                             <div class="product-image">
-                                <img loading="lazy" src="public/images/products/daikin-emura-wit.webp" alt="Daikin Emura">
+                                <img loading="lazy" src="/assets/daikin-emura-wit.webp" alt="Daikin Emura">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/DAIKIN_logo.svg" alt="Daikin" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMEE4RTEiPkRBSUtJTjwvdGV4dD4KPC9zdmc+" alt="Daikin" style="height: 20px;" class="mb-2">
                                 <h4>Emura FTXJ-MW</h4>
                                 <p class="text-muted small">Iconisch design, superieure prestaties</p>
                                 <ul class="product-specs">
@@ -454,7 +454,7 @@
                                 <img loading="lazy" src="public/images/products/lg-artcool-beige.webp" alt="LG Artcool">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/LG_logo_(2014).svg" alt="LG" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjMwIiByPSIyNSIgZmlsbD0iI0E1MDAzNCIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5MRzwvdGV4dD4KPC9zdmc+" alt="LG" style="height: 20px;" class="mb-2">
                                 <h4>Artcool Gallery</h4>
                                 <p class="text-muted small">Kunstwerk aan de muur</p>
                                 <ul class="product-specs">
@@ -478,7 +478,7 @@
                                 <img loading="lazy" src="public/images/products/lg-standard-plus-wit.webp" alt="LG Standard Plus">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/LG_logo_(2014).svg" alt="LG" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjMwIiByPSIyNSIgZmlsbD0iI0E1MDAzNCIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5MRzwvdGV4dD4KPC9zdmc+" alt="LG" style="height: 20px;" class="mb-2">
                                 <h4>Standard Plus PC12SQ</h4>
                                 <p class="text-muted small">Betrouwbaar en betaalbaar</p>
                                 <ul class="product-specs">
@@ -504,7 +504,7 @@
                                 <img loading="lazy" src="public/images/products/samsung-wind-free-wit.webp" alt="Samsung Wind-Free">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/Samsung_Logo.svg" alt="Samsung" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzE0MjhBMCI+U0FNU1VORzwvdGV4dD4KPC9zdmc+" alt="Samsung" style="height: 20px;" class="mb-2">
                                 <h4>Wind-Free Elite</h4>
                                 <p class="text-muted small">Koeling zonder koude luchtstroom</p>
                                 <ul class="product-specs">
@@ -528,7 +528,7 @@
                                 <img loading="lazy" src="public/images/products/samsung-cebu-wit.webp" alt="Samsung CEBU">
                             </div>
                             <div class="product-details">
-                                <img src="public/images/brands/Samsung_Logo.svg" alt="Samsung" style="height: 20px;" class="mb-2">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDx0ZXh0IHg9IjEwMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzE0MjhBMCI+U0FNU1VORzwvdGV4dD4KPC9zdmc+" alt="Samsung" style="height: 20px;" class="mb-2">
                                 <h4>CEBU AR09</h4>
                                 <p class="text-muted small">Krachtig en energiezuinig</p>
                                 <ul class="product-specs">

@@ -323,16 +323,34 @@ function setupForm(formId, formType) {
         // Get current brand for email
         const brand = getCurrentBrand();
         
-        // Prepare email parameters
+        // Prepare email parameters with fallbacks
         const templateParams = {
-            from_name: data.name,
-            from_email: data.email,
-            phone: data.phone,
-            service: data.service,
+            // Primary fields
+            from_name: data.name || '',
+            from_email: data.email || '',
+            phone: data.phone || '',
+            service: data.service || '',
             message: data.message || 'Geen bericht opgegeven',
             subject: `${formType} aanvraag via ${window.location.hostname}`,
             to_name: brand.name,
-            reply_to: data.email
+            reply_to: data.email || '',
+            
+            // Dutch field names (sommige templates gebruiken deze)
+            naam: data.name || '',
+            email: data.email || '',
+            telefoon: data.phone || '',
+            dienst: data.service || '',
+            bericht: data.message || 'Geen bericht opgegeven',
+            
+            // Complete message as backup
+            full_message: `
+Nieuwe aanvraag via ${window.location.hostname}:
+Naam: ${data.name || 'Niet opgegeven'}
+Email: ${data.email || 'Niet opgegeven'}
+Telefoon: ${data.phone || 'Niet opgegeven'}
+Dienst: ${data.service || 'Niet opgegeven'}
+Bericht: ${data.message || 'Geen bericht opgegeven'}
+            `.trim()
         };
         
         try {
