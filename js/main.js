@@ -488,9 +488,9 @@ scrollToTopBtn?.addEventListener('click', function() {
     });
 });
 
-// Lazy loading for performance
-const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-if ('IntersectionObserver' in window) {
+// Lazy loading for performance (only for images with data-src)
+const lazyImages = document.querySelectorAll('img[data-src]');
+if ('IntersectionObserver' in window && lazyImages.length > 0) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
