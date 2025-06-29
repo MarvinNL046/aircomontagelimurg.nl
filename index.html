@@ -180,6 +180,10 @@
                                 <div class="invalid-feedback">Telefoonnummer is verplicht</div>
                             </div>
                             <div class="mb-3">
+                                <input type="text" class="form-control" name="city" placeholder="Uw woonplaats" required>
+                                <div class="invalid-feedback">Woonplaats is verplicht</div>
+                            </div>
+                            <div class="mb-3">
                                 <select class="form-select" name="service" required>
                                     <option value="">Kies uw dienst</option>
                                     <option value="installatie">Airco Installatie</option>
@@ -750,6 +754,15 @@
                                     <label class="form-label">Email *</label>
                                     <input type="email" class="form-control" name="email" required>
                                     <div class="invalid-feedback">Geldig email adres is verplicht</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Woonplaats *</label>
+                                    <input type="text" class="form-control" name="city" required>
+                                    <div class="invalid-feedback">Woonplaats is verplicht</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Postcode</label>
+                                    <input type="text" class="form-control" name="address" placeholder="bv. 6211 AA">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Type Dienst *</label>
