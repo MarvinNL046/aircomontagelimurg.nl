@@ -181,6 +181,9 @@ const EMAILJS_PUBLIC_KEY = 'sjJ8kK6U9wFjY0zX9';
 // GoHighLevel Webhook Configuration
 const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/k90zUH3RgEQLfj7Yc55b/webhook-trigger/54670718-ea44-43a1-a81a-680ab3d5f67f';
 
+// Debug mode - set to false in production
+const DEBUG_MODE = false;
+
 // Initialize EmailJS when it's loaded
 let emailJsReady = false;
 
@@ -202,9 +205,18 @@ function waitForEmailJS(callback) {
     }
 }
 
-// Send data to GoHighLevel webhook
+// Enhanced webhook function with proper error handling and timeouts
 async function sendToWebhook(data) {
+    const startTime = Date.now();
+    let controller;
+    
     try {
+        // Input validation
+        if (!data || !data.name || !data.email) {
+            console.warn('❌ Invalid webhook data - missing required fields');
+            return false;
+        }
+
         const webhookData = {
             data: {
                 name: data.name || '',
@@ -215,24 +227,100 @@ async function sendToWebhook(data) {
             }
         };
 
+        if (DEBUG_MODE) {
+            console.log('📤 Sending webhook data:', webhookData);
+        }
+
+        // Create abort controller for timeout handling
+        controller = new AbortController();
+        const timeoutId = setTimeout(() => {
+            controller.abort();
+            console.warn('❌ Webhook timeout after 10 seconds');
+        }, 10000);
+
         const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
+            signal: controller.signal,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'User-Agent': 'AircoMontage-Website/1.0',
+                'X-Requested-With': 'XMLHttpRequest'
             },
             body: JSON.stringify(webhookData)
         });
 
+        clearTimeout(timeoutId);
+        const responseTime = Date.now() - startTime;
+
+        if (DEBUG_MODE) {
+            console.log(`📥 Webhook response: ${response.status} ${response.statusText} (${responseTime}ms)`);
+        }
+
         if (!response.ok) {
-            console.error('Webhook response not OK:', response.status);
+            let errorDetails = `Status: ${response.status} ${response.statusText}`;
+            
+            try {
+                const responseText = await response.text();
+                if (responseText) {
+                    errorDetails += ` | Response: ${responseText.substring(0, 200)}`;
+                }
+            } catch (e) {
+                errorDetails += ` | Could not read response body`;
+            }
+            
+            console.error('❌ Webhook failed:', errorDetails);
+            
+            // Track different error types
+            if (response.status === 400) {
+                console.error('❌ Bad Request - Check data format');
+            } else if (response.status === 401) {
+                console.error('❌ Unauthorized - Check webhook URL');
+            } else if (response.status === 403) {
+                console.error('❌ Forbidden - Check permissions');
+            } else if (response.status >= 500) {
+                console.error('❌ Server Error - GoHighLevel may be down');
+            }
+            
             return false;
         }
         
-        console.log('Webhook sent successfully');
+        // Try to read response for additional info
+        try {
+            const responseText = await response.text();
+            if (DEBUG_MODE && responseText) {
+                console.log('✅ Webhook response body:', responseText);
+            }
+        } catch (e) {
+            // Response body not readable, but request was successful
+            if (DEBUG_MODE) {
+                console.log('✅ Webhook successful (no response body)');
+            }
+        }
+
+        console.log(`✅ Webhook sent successfully in ${responseTime}ms`);
         return true;
+        
     } catch (error) {
-        console.error('Webhook error:', error);
+        const responseTime = Date.now() - startTime;
+        
+        if (error.name === 'AbortError') {
+            console.error(`❌ Webhook timeout after ${responseTime}ms`);
+        } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            console.error('❌ Network error - check internet connection');
+        } else {
+            console.error('❌ Webhook error:', error.message);
+        }
+        
+        if (DEBUG_MODE) {
+            console.error('❌ Full error:', error);
+        }
+        
         return false;
+    } finally {
+        if (controller) {
+            controller = null;
+        }
     }
 }
 

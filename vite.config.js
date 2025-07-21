@@ -17,7 +17,8 @@ export default defineConfig({
         producten: './producten.html',
         heerlen: './heerlen.html',
         sittard: './sittard.html',
-        maastricht: './maastricht.html'
+        maastricht: './maastricht.html',
+        webhookTest: './webhook-test.html'
       },
       output: {
         assetFileNames: (assetInfo) => {
@@ -33,6 +34,10 @@ export default defineConfig({
             return `js/[name][extname]`;
           }
           return `assets/[name][extname]`;
+        },
+        manualChunks: {
+          vendor: ['@emailjs/browser'],
+          toast: ['react-hot-toast']
         }
       },
     },
@@ -49,5 +54,8 @@ export default defineConfig({
     port: 8847,
     host: 'localhost',
     open: true
+  },
+  define: {
+    'process.env': process.env
   }
 });

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Testing Suite - GoHighLevel Integration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .test-result { 
+            margin: 10px 0; 
+            padding: 10px; 
+            border-radius: 5px; 
+        }
+        .test-success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .test-error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .test-warning { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        .test-info { background-color: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        
+        .form-container {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">🧪 Form Testing Suite</h1>
+        <p class="text-muted mb-4">Comprehensive testing van alle contactformulieren met GoHighLevel webhook integratie</p>
+        
+        <!-- Test Results -->
+        <div id="testResults" class="mb-4">
+            <h3>Test Results</h3>
+            <div id="resultsContainer"></div>
+        </div>
+
+        <!-- Hero Form Test -->
+        <div class="form-container">
+            <h3>1. Hero Form Test</h3>
+            <form id="testHeroForm" class="row g-3">
+                <div class="col-md-6">
+                    <label for="heroName" class="form-label">Naam *</label>
+                    <input type="text" class="form-control" id="heroName" name="name" value="Test Hero User" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="heroEmail" class="form-label">Email *</label>
+                    <input type="email" class="form-control" id="heroEmail" name="email" value="hero@staycoolairco.nl" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="heroPhone" class="form-label">Telefoon *</label>
+                    <input type="tel" class="form-control" id="heroPhone" name="phone" value="0612345678" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="heroCity" class="form-label">Woonplaats *</label>
+                    <input type="text" class="form-control" id="heroCity" name="city" value="Heerlen" required>
+                </div>
+                <div class="col-12">
+                    <label for="heroService" class="form-label">Dienst *</label>
+                    <select class="form-select" id="heroService" name="service" required>
+                        <option value="Airco Installatie">Airco Installatie</option>
+                        <option value="Airco Onderhoud">Airco Onderhoud</option>
+                        <option value="Airco Reparatie">Airco Reparatie</option>
+                        <option value="Vrijblijvende Offerte">Vrijblijvende Offerte</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="heroMessage" class="form-label">Bericht</label>
+                    <textarea class="form-control" id="heroMessage" name="message" rows="3">Test bericht voor hero form - webhook integratie test</textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Test Hero Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Main Contact Form Test -->
+        <div class="form-container">
+            <h3>2. Main Contact Form Test</h3>
+            <form id="testContactForm" class="row g-3">
+                <div class="col-md-6">
+                    <label for="contactName" class="form-label">Naam *</label>
+                    <input type="text" class="form-control" id="contactName" name="name" value="Test Contact User" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="contactEmail" class="form-label">Email *</label>
+                    <input type="email" class="form-control" id="contactEmail" name="email" value="contact@staycoolairco.nl" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="contactPhone" class="form-label">Telefoon *</label>
+                    <input type="tel" class="form-control" id="contactPhone" name="phone" value="0612345679" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="contactCity" class="form-label">Woonplaats *</label>
+                    <input type="text" class="form-control" id="contactCity" name="city" value="Sittard" required>
+                </div>
+                <div class="col-12">
+                    <label for="contactService" class="form-label">Dienst *</label>
+                    <select class="form-select" id="contactService" name="service" required>
+                        <option value="Advies & Informatie">Advies & Informatie</option>
+                        <option value="Vrijblijvende Offerte">Vrijblijvende Offerte</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="contactMessage" class="form-label">Bericht</label>
+                    <textarea class="form-control" id="contactMessage" name="message" rows="3">Test bericht voor main contact form - webhook integratie test</textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Test Contact Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- City Form Test -->
+        <div class="form-container">
+            <h3>3. City Contact Form Test</h3>
+            <form id="testCityForm" class="row g-3">
+                <div class="col-md-6">
+                    <label for="cityName" class="form-label">Naam *</label>
+                    <input type="text" class="form-control" id="cityName" name="name" value="Test City User" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cityEmail" class="form-label">Email *</label>
+                    <input type="email" class="form-control" id="cityEmail" name="email" value="city@staycoolairco.nl" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cityPhone" class="form-label">Telefoon *</label>
+                    <input type="tel" class="form-control" id="cityPhone" name="phone" value="0612345680" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cityWoonplaats" class="form-label">Woonplaats</label>
+                    <input type="text" class="form-control" id="cityWoonplaats" name="city" value="Maastricht">
+                </div>
+                <div class="col-12">
+                    <label for="cityMessage" class="form-label">Bericht</label>
+                    <textarea class="form-control" id="cityMessage" name="message" rows="3">Test bericht voor city form - webhook integratie test</textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Test City Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Test Log -->
+        <div class="mt-4">
+            <h3>📋 Test Log</h3>
+            <div id="testLog" style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 400px; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Import the enhanced webhook function from main.js
+        const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/k90zUH3RgEQLfj7Yc55b/webhook-trigger/54670718-ea44-43a1-a81a-680ab3d5f67f';
+        const DEBUG_MODE = true;
+        
+        let testCount = 0;
+        let successCount = 0;
+        let failCount = 0;
+
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            const logElement = document.getElementById('testLog');
+            logElement.textContent += `[${timestamp}] ${message}\n`;
+            logElement.scrollTop = logElement.scrollHeight;
+            console.log(message);
+        }
+
+        function addResult(type, title, message) {
+            const container = document.getElementById('resultsContainer');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result test-${type}`;
+            resultDiv.innerHTML = `<strong>${title}</strong><br>${message}`;
+            container.appendChild(resultDiv);
+        }
+
+        // Enhanced webhook function from main.js
+        async function sendToWebhook(data) {
+            const startTime = Date.now();
+            let controller;
+            
+            try {
+                // Input validation
+                if (!data || !data.name || !data.email) {
+                    log('❌ Invalid webhook data - missing required fields');
+                    return false;
+                }
+
+                const webhookData = {
+                    data: {
+                        name: data.name || '',
+                        email: data.email || '',
+                        phone: data.phone || '',
+                        city: data.city || data.woonplaats || '',
+                        message: data.message || data.bericht || 'Geen bericht opgegeven'
+                    }
+                };
+
+                log(`📤 Sending webhook data: ${JSON.stringify(webhookData, null, 2)}`);
+
+                // Create abort controller for timeout handling
+                controller = new AbortController();
+                const timeoutId = setTimeout(() => {
+                    controller.abort();
+                    log('❌ Webhook timeout after 10 seconds');
+                }, 10000);
+
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    signal: controller.signal,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'User-Agent': 'AircoMontage-Website-Test/1.0',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify(webhookData)
+                });
+
+                clearTimeout(timeoutId);
+                const responseTime = Date.now() - startTime;
+
+                log(`📥 Webhook response: ${response.status} ${response.statusText} (${responseTime}ms)`);
+
+                if (!response.ok) {
+                    let errorDetails = `Status: ${response.status} ${response.statusText}`;
+                    
+                    try {
+                        const responseText = await response.text();
+                        if (responseText) {
+                            errorDetails += ` | Response: ${responseText.substring(0, 200)}`;
+                        }
+                    } catch (e) {
+                        errorDetails += ` | Could not read response body`;
+                    }
+                    
+                    log(`❌ Webhook failed: ${errorDetails}`);
+                    return false;
+                }
+                
+                // Try to read response for additional info
+                try {
+                    const responseText = await response.text();
+                    if (responseText) {
+                        log(`✅ Webhook response body: ${responseText}`);
+                    }
+                } catch (e) {
+                    log('✅ Webhook successful (no response body)');
+                }
+
+                log(`✅ Webhook sent successfully in ${responseTime}ms`);
+                return true;
+                
+            } catch (error) {
+                const responseTime = Date.now() - startTime;
+                
+                if (error.name === 'AbortError') {
+                    log(`❌ Webhook timeout after ${responseTime}ms`);
+                } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    log('❌ Network error - check internet connection');
+                } else {
+                    log(`❌ Webhook error: ${error.message}`);
+                }
+                
+                return false;
+            } finally {
+                if (controller) {
+                    controller = null;
+                }
+            }
+        }
+
+        // Test form submission
+        async function testFormSubmission(formId, formName) {
+            testCount++;
+            log(`\n🧪 Starting test ${testCount}: ${formName}`);
+            
+            try {
+                const form = document.getElementById(formId);
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                log(`📋 Form data collected: ${JSON.stringify(data, null, 2)}`);
+                
+                const webhookSuccess = await sendToWebhook(data);
+                
+                if (webhookSuccess) {
+                    successCount++;
+                    addResult('success', `✅ ${formName}`, 'Webhook test successful! Data sent to GoHighLevel.');
+                    log(`✅ Test ${testCount} PASSED: ${formName}`);
+                } else {
+                    failCount++;
+                    addResult('error', `❌ ${formName}`, 'Webhook test failed! Check console for details.');
+                    log(`❌ Test ${testCount} FAILED: ${formName}`);
+                }
+                
+            } catch (error) {
+                failCount++;
+                addResult('error', `❌ ${formName}`, `Test error: ${error.message}`);
+                log(`❌ Test ${testCount} ERROR: ${formName} - ${error.message}`);
+            }
+            
+            log(`📊 Current stats: ${successCount} passed, ${failCount} failed, ${testCount} total`);
+        }
+
+        // Initialize tests
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Form Testing Suite Initialized');
+            log('📍 Testing GoHighLevel Webhook Integration');
+            log('🔗 Webhook URL: ' + WEBHOOK_URL);
+            log('==========================================\n');
+
+            // Test Hero Form
+            document.getElementById('testHeroForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await testFormSubmission('testHeroForm', 'Hero Form');
+            });
+
+            // Test Main Contact Form
+            document.getElementById('testContactForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await testFormSubmission('testContactForm', 'Main Contact Form');
+            });
+
+            // Test City Form
+            document.getElementById('testCityForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await testFormSubmission('testCityForm', 'City Contact Form');
+            });
+
+            // Auto-run all tests
+            addResult('info', '🧪 Test Suite Ready', 'Click any form button to test webhook integration. All forms are pre-filled with test data.');
+            log('✅ All form handlers attached. Ready for testing!');
+        });
+
+        // Run all tests automatically
+        async function runAllTests() {
+            log('\n🚀 Running all tests automatically...');
+            
+            await testFormSubmission('testHeroForm', 'Hero Form');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testFormSubmission('testContactForm', 'Main Contact Form');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            await testFormSubmission('testCityForm', 'City Contact Form');
+            
+            log('\n🏁 All tests completed!');
+            log(`📊 Final Results: ${successCount}/${testCount} tests passed`);
+            
+            if (successCount === testCount) {
+                addResult('success', '🎉 All Tests Passed!', `${successCount}/${testCount} webhook tests successful. GoHighLevel integration is working perfectly!`);
+            } else {
+                addResult('warning', '⚠️ Some Tests Failed', `${successCount}/${testCount} tests passed. Check the log for details.`);
+            }
+        }
+
+        // Add button to run all tests
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.container');
+            const runAllBtn = document.createElement('button');
+            runAllBtn.className = 'btn btn-success btn-lg mb-4';
+            runAllBtn.textContent = '🚀 Run All Tests Automatically';
+            runAllBtn.onclick = runAllTests;
+            container.insertBefore(runAllBtn, container.children[1]);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
