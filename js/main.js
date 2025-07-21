@@ -178,6 +178,9 @@ const EMAILJS_SERVICE_ID = 'service_1rruujp';
 const EMAILJS_TEMPLATE_ID = 'template_rkcpzhg';
 const EMAILJS_PUBLIC_KEY = 'sjJ8kK6U9wFjY0zX9';
 
+// GoHighLevel Webhook Configuration
+const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/k90zUH3RgEQLfj7Yc55b/webhook-trigger/54670718-ea44-43a1-a81a-680ab3d5f67f';
+
 // Initialize EmailJS when it's loaded
 let emailJsReady = false;
 
@@ -196,6 +199,40 @@ function waitForEmailJS(callback) {
         callback();
     } else {
         setTimeout(() => waitForEmailJS(callback), 100);
+    }
+}
+
+// Send data to GoHighLevel webhook
+async function sendToWebhook(data) {
+    try {
+        const webhookData = {
+            data: {
+                name: data.name || '',
+                email: data.email || '',
+                phone: data.phone || '',
+                city: data.city || data.woonplaats || '',
+                message: data.message || data.bericht || 'Geen bericht opgegeven'
+            }
+        };
+
+        const response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(webhookData)
+        });
+
+        if (!response.ok) {
+            console.error('Webhook response not OK:', response.status);
+            return false;
+        }
+        
+        console.log('Webhook sent successfully');
+        return true;
+    } catch (error) {
+        console.error('Webhook error:', error);
+        return false;
     }
 }
 
@@ -388,28 +425,49 @@ Bericht: ${data.message || 'Geen bericht opgegeven'}
         };
         
         try {
-            // Check if EmailJS is ready
-            if (!emailJsReady) {
-                throw new Error('EmailJS is not ready yet. Please try again.');
+            // Dual submission system: send to both EmailJS and webhook
+            let emailJsSuccess = false;
+            let webhookSuccess = false;
+            
+            // Try to send via EmailJS
+            if (emailJsReady) {
+                try {
+                    const response = await emailjs.send(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
+                        templateParams
+                    );
+                    
+                    if (response.status === 200) {
+                        emailJsSuccess = true;
+                        console.log('EmailJS sent successfully');
+                    }
+                } catch (emailError) {
+                    console.error('EmailJS Error:', emailError);
+                }
             }
             
-            // Send email
-            const response = await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                templateParams
-            );
+            // Try to send to webhook
+            try {
+                webhookSuccess = await sendToWebhook(data);
+            } catch (webhookError) {
+                console.error('Webhook Error:', webhookError);
+            }
             
-            if (response.status === 200) {
-                // Success
+            // Check if at least one method succeeded
+            if (emailJsSuccess || webhookSuccess) {
+                // Success - at least one method worked
                 showAlert(form, 'success', '✓ Bedankt voor uw aanvraag! Wij nemen binnen 24 uur contact met u op.');
                 form.reset();
                 form.classList.remove('was-validated');
+                
+                console.log(`Form submitted successfully - EmailJS: ${emailJsSuccess}, Webhook: ${webhookSuccess}`);
             } else {
-                throw new Error('Email sending failed');
+                // Both methods failed
+                throw new Error('Both EmailJS and webhook failed');
             }
         } catch (error) {
-            console.error('EmailJS Error:', error);
+            console.error('Form submission error:', error);
             showAlert(form, 'danger', `Er ging iets mis bij het versturen. Probeer het opnieuw of bel ons direct op ${brand.phone}.`);
         } finally {
             // Reset button state
