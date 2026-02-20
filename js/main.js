@@ -180,7 +180,7 @@ const EMAILJS_PUBLIC_KEY = 'sjJ8kK6U9wFjY0zX9';
 
 // LeadFlow CRM configuration
 const LEADFLOW_URL = "https://wetryleadflow.com/api/webhooks/leads";
-const LEADFLOW_API_KEY = "lf_1wYS_sm_h375UmWm5TuvN7zHFLHltLHE";
+const LEADFLOW_API_KEY = "lf_lRyHo1ENukt9VsG9gYT8EKeDA_nKuoQ1";
 
 // Debug mode - set to false in production
 const DEBUG_MODE = false;
