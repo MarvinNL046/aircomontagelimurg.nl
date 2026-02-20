@@ -477,6 +477,11 @@ Bericht: ${data.message || 'Geen bericht opgegeven'}
                 form.classList.remove('was-validated');
 
                 console.log(`Form submitted successfully - EmailJS: ${emailJsSuccess}, Leadflow: ${leadflowSuccess}`);
+
+                // Redirect to thank you page after a short delay
+                setTimeout(() => {
+                    window.location.href = 'https://staycoolairco.nl/tot-snel';
+                }, 1500);
             } else {
                 // All methods failed
                 throw new Error('EmailJS and Leadflow both failed');
