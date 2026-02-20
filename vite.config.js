@@ -18,7 +18,6 @@ export default defineConfig({
         heerlen: './heerlen.html',
         sittard: './sittard.html',
         maastricht: './maastricht.html',
-        webhookTest: './webhook-test.html'
       },
       output: {
         assetFileNames: (assetInfo) => {
